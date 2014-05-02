@@ -1,0 +1,23 @@
+#!/bin/sh
+
+for jar_path in `find . -name "*SNAPSHOT.jar"` ; do 
+    CLASSPATH="${jar_path}:$CLASSPATH"
+done
+
+for jar_path in `find . -name "*SNAPSHOT-shaded.jar"` ; do 
+    CLASSPATH="${jar_path}:$CLASSPATH"
+done
+
+for jar_path in `find ./lib -name "*.jar"` ; do 
+    CLASSPATH="${jar_path}:$CLASSPATH"
+done
+
+for jar_path in `find /usr/lib/hadoop/ -name "hadoop*.jar"` ; do 
+    CLASSPATH="${jar_path}:$CLASSPATH"
+done
+
+for jar_path in `find /usr/lib/hadoop/lib/ -name "*.jar"` ; do 
+    CLASSPATH="${jar_path}:$CLASSPATH"
+done
+
+echo -n $CLASSPATH
